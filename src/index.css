@@ -4,13 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ERP Student Management System - Smart Automation Design System */
+/* ERP Smart Trackers - Tech + Education Design System */
 
 @layer base {
   :root {
-    /* Smart Blue Theme */
+    /* Modern Tech Education Theme */
     --background: 248 250 252; /* slate-50 */
-    --foreground: 226 232 240; /* slate-700 */
+    --foreground: 51 65 85; /* slate-700 */
 
     --card: 255 255 255; /* white */
     --card-foreground: 51 65 85; /* slate-700 */
@@ -18,11 +18,22 @@
     --popover: 255 255 255;
     --popover-foreground: 51 65 85;
 
-    /* Smart Blue Primary */
-    --primary: 219 234 254; /* blue-100 */
-    --primary-foreground: 30 58 138; /* blue-800 */
+    /* Primary Blue - Trust & Clarity */
+    --primary: 59 130 246; /* blue-500 */
+    --primary-foreground: 255 255 255;
     --primary-deep: 30 58 138; /* blue-800 */
     --primary-light: 239 246 255; /* blue-50 */
+
+    /* Teal - Innovation & Tech */
+    --teal: 20 184 166; /* teal-500 */
+    --teal-foreground: 255 255 255;
+    --teal-light: 240 253 250; /* teal-50 */
+    --teal-deep: 15 118 110; /* teal-700 */
+
+    /* Orange - Progress & Action */
+    --orange: 249 115 22; /* orange-500 */
+    --orange-foreground: 255 255 255;
+    --orange-light: 255 247 237; /* orange-50 */
 
     /* Professional Grays */
     --secondary: 241 245 249; /* slate-100 */
@@ -34,7 +45,7 @@
     --accent: 241 245 249; /* slate-100 */
     --accent-foreground: 51 65 85; /* slate-700 */
 
-    /* Success Green */
+    /* Success Green - Enhanced */
     --success: 34 197 94; /* green-500 */
     --success-foreground: 255 255 255;
     --success-light: 240 253 244; /* green-50 */
@@ -53,10 +64,16 @@
     --sidebar-bg: 255 255 255;
     --nav-active: 219 234 254; /* blue-100 */
     
-    /* Shadows and Effects */
+    /* Modern Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--teal)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(var(--teal)));
+    --gradient-warm: linear-gradient(135deg, hsl(var(--orange)), hsl(var(--primary)));
+    
+    /* Enhanced Shadows */
     --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-large: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.1);
     
     /* Animation Timings */
     --transition-fast: 0.15s ease-out;
@@ -132,15 +149,42 @@
 }
 
 @layer components {
-  /* ERP Dashboard Cards */
+  /* Modern ERP Dashboard Cards */
   .dashboard-card {
-    @apply bg-card p-6 rounded-xl shadow-[var(--shadow-medium)] border border-border;
-    transition: var(--transition-normal);
+    @apply bg-card p-6 rounded-xl shadow-[var(--shadow-medium)] border border-border/50;
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
   }
   
   .dashboard-card:hover {
     @apply shadow-[var(--shadow-large)];
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Metric Cards with Gradients */
+  .metric-card-primary {
+    @apply dashboard-card;
+    background: linear-gradient(135deg, hsl(var(--primary-light)), hsl(var(--card)));
+    border: 1px solid hsl(var(--primary) / 0.2);
+  }
+  
+  .metric-card-teal {
+    @apply dashboard-card;
+    background: linear-gradient(135deg, hsl(var(--teal-light)), hsl(var(--card)));
+    border: 1px solid hsl(var(--teal) / 0.2);
+  }
+  
+  .metric-card-orange {
+    @apply dashboard-card;
+    background: linear-gradient(135deg, hsl(var(--orange-light)), hsl(var(--card)));
+    border: 1px solid hsl(var(--orange) / 0.2);
+  }
+  
+  .metric-card-success {
+    @apply dashboard-card;
+    background: linear-gradient(135deg, hsl(var(--success-light)), hsl(var(--card)));
+    border: 1px solid hsl(var(--success) / 0.2);
   }
   
   /* Status Indicators */
@@ -152,17 +196,26 @@
     @apply bg-[hsl(var(--alert))] text-[hsl(var(--destructive))] border-[hsl(var(--destructive))];
   }
   
-  /* Navigation States */
+  /* Enhanced Navigation States */
   .nav-item {
-    @apply px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-3;
+    @apply px-4 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 relative;
+    backdrop-filter: blur(10px);
   }
   
   .nav-item:hover {
-    @apply bg-[hsl(var(--nav-active))] text-[hsl(var(--primary-deep))];
+    @apply bg-[hsl(var(--teal-light))] text-[hsl(var(--teal-deep))];
+    transform: translateX(4px);
+    box-shadow: var(--shadow-medium);
   }
   
   .nav-item.active {
-    @apply bg-[hsl(var(--primary-deep))] text-white;
+    background: var(--gradient-primary);
+    @apply text-white shadow-[var(--shadow-medium)];
+  }
+  
+  .nav-item.active::before {
+    content: '';
+    @apply absolute left-0 top-0 h-full w-1 bg-white rounded-r-full;
   }
   
   /* Form Enhancements */

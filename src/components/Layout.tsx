@@ -29,31 +29,36 @@ const Layout = ({ children }: LayoutProps) => {
       icon: LayoutDashboard, 
       label: 'Dashboard', 
       path: '/dashboard',
-      description: 'Overview & Analytics'
+      description: 'Analytics & Overview',
+      color: 'text-primary'
     },
     { 
       icon: Users, 
       label: 'Admissions', 
       path: '/admissions',
-      description: 'Student Registration'
+      description: 'Student Registration',
+      color: 'text-success'
     },
     { 
       icon: CreditCard, 
       label: 'Fee Management', 
       path: '/fee-management',
-      description: 'Payments & Receipts'
+      description: 'Payments & Receipts',
+      color: 'text-teal'
     },
     { 
       icon: Building, 
       label: 'Hostel Allocation', 
       path: '/hostel',
-      description: 'Room Management'
+      description: 'Room Management',
+      color: 'text-orange'
     },
     { 
       icon: FileText, 
       label: 'Examinations', 
       path: '/examinations',
-      description: 'Records & Schedules'
+      description: 'Records & Schedules',
+      color: 'text-purple-600'
     },
   ];
 
@@ -79,12 +84,14 @@ const Layout = ({ children }: LayoutProps) => {
           </Button>
           
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary-deep rounded-lg">
+            <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-teal">
               <GraduationCap className="h-6 w-6 text-white" />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-lg font-bold text-primary-deep">ERP Smart</h1>
-              <p className="text-xs text-muted-foreground">Student Management System</p>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-teal bg-clip-text text-transparent">
+                Smart Trackers ERP
+              </h1>
+              <p className="text-xs text-muted-foreground">Digital India • Education Automation</p>
             </div>
           </div>
         </div>
@@ -119,7 +126,7 @@ const Layout = ({ children }: LayoutProps) => {
                     isActive(item.path) && "active"
                   )}
                 >
-                  <item.icon className="h-5 w-5 flex-shrink-0" />
+                  <item.icon className={`h-5 w-5 flex-shrink-0 ${item.color}`} />
                   <div className="flex-1 min-w-0">
                     <div className="font-medium">{item.label}</div>
                     <div className="text-xs text-muted-foreground truncate">

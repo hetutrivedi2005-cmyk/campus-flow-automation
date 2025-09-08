@@ -34,6 +34,17 @@ export default {
 					deep: 'hsl(var(--primary-deep))',
 					light: 'hsl(var(--primary-light))'
 				},
+				teal: {
+					DEFAULT: 'hsl(var(--teal))',
+					foreground: 'hsl(var(--teal-foreground))',
+					light: 'hsl(var(--teal-light))',
+					deep: 'hsl(var(--teal-deep))'
+				},
+				orange: {
+					DEFAULT: 'hsl(var(--orange))',
+					foreground: 'hsl(var(--orange-foreground))',
+					light: 'hsl(var(--orange-light))'
+				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
